@@ -1,0 +1,24 @@
+spring:
+  # application name
+  application:
+    name: springSecurityJwt
+  # datasource
+  datasource:
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    url: jdbc:log4jdbc:mysql://localhost:3306/spring_security_practice
+    username: root
+    password: 1234
+  # jpa
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true # sql show
+        format_sql: true # pretty show
+    hibernate:
+      ddl-auto: none # db init (none, create-drop, update, validate, none)
+  web:
+    resources:
+      add-mappings: false
+
+jwt:
+  secret: c3ByaW5nU2VjdXJpdHlKd3RQcmFjdGljZUtleUphbmdKam9sa2l0

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- Custom Highlight Converter -->
+    <conversionRule conversionWord="highlight" converterClass="com.jdh.springSecurityJwt.config.log.CustomHighlightConverter"/>
+
+    <property name="LOG_LEVEL_PATTERN" value="%highlight(%-5level)"/>
+
+    <appender name="STDOUT"
+              class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%boldMagenta(%d{MM-dd HH:mm:ss}) [${LOG_LEVEL_PATTERN}] %cyan(%logger{5}.%M) - %msg %n</pattern>
+        </encoder>
+    </appender>
+    <logger name="jdbc" level="OFF" />
+    <logger name="jdbc.sqlonly" level="INFO" />
+    <logger name="jdbc.sqltiming" level="OFF" />
+    <logger name="jdbc.audit" level="OFF" />
+    <logger name="jdbc.resultset" level="OFF" />
+    <logger name="jdbc.resultsettable" level="OFF" />
+    <logger name="jdbc.connection" level="OFF" />
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>
