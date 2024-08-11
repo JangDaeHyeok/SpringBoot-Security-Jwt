@@ -15,7 +15,7 @@ spring:
         show_sql: true # sql show
         format_sql: true # pretty show
     hibernate:
-      ddl-auto: none # db init (none, create-drop, update, validate, none)
+      ddl-auto: none # db init (create, create-drop, update, validate, none)
   web:
     resources:
       add-mappings: false
