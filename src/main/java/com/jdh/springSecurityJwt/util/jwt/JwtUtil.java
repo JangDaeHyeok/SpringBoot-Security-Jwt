@@ -3,9 +3,7 @@ package com.jdh.springSecurityJwt.util.jwt;
 import lombok.experimental.UtilityClass;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.Authentication;
-import org.springframework.stereotype.Component;
 
-@Component
 @UtilityClass
 public class JwtUtil {
 
