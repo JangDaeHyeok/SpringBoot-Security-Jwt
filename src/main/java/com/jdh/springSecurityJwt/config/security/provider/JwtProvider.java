@@ -53,7 +53,8 @@ public class JwtProvider {
      */
     public <T> T getClaimFromToken(final String token, final Function<Claims, T> claimsResolver) {
         // token 유효성 검증
-        validateToken(token);
+        if(Boolean.FALSE.equals(validateToken(token)))
+            return null;
 
         final Claims claims = getAllClaimsFromToken(token);
 

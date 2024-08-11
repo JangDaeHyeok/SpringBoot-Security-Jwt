@@ -2,6 +2,7 @@ package com.jdh.springSecurityJwt.config.security;
 
 import com.jdh.springSecurityJwt.api.user.enums.RoleName;
 import com.jdh.springSecurityJwt.config.security.filter.JwtAuthFilter;
+import com.jdh.springSecurityJwt.config.security.handler.CustomAccessDeniedHandler;
 import com.jdh.springSecurityJwt.config.security.handler.CustomAuthenticationEntryPointHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -29,6 +30,8 @@ public class SecurityConfig {
 
     private final CustomAuthenticationEntryPointHandler customAuthenticationEntryPointHandler;
 
+    private final CustomAccessDeniedHandler customAccessDeniedHandler;
+
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
@@ -48,7 +51,8 @@ public class SecurityConfig {
                 mvc.pattern("/login"),
                 mvc.pattern("/register"),
                 mvc.pattern("/token-refresh"),
-                mvc.pattern("/favicon.ico")
+                mvc.pattern("/favicon.ico"),
+                mvc.pattern("/error")
         };
 
         // http request 인증 설정
@@ -77,9 +81,10 @@ public class SecurityConfig {
         // before filter
         http.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
-        // entry point handler
+        // exception handler
         http.exceptionHandling(conf -> conf
                 .authenticationEntryPoint(customAuthenticationEntryPointHandler)
+                .accessDeniedHandler(customAccessDeniedHandler)
         );
 
         // build
