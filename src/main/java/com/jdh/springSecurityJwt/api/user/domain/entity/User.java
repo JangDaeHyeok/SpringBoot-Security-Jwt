@@ -17,6 +17,7 @@ import org.hibernate.annotations.SQLRestriction;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @SQLDelete(sql = "UPDATE user SET del_yn = true WHERE id = ?")
 @SQLRestriction("del_yn = false")
+@Table(name = "users")
 public class User extends RegModDt {
 
     @Id

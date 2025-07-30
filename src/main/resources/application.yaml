@@ -2,12 +2,16 @@ spring:
   # application name
   application:
     name: springSecurityJwt
-  # datasource
   datasource:
-    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-    url: jdbc:log4jdbc:mysql://localhost:3306/spring_security_practice
-    username: root
-    password: 1234
+    # h2
+    url: jdbc:h2:mem:testdb;MODE=MySQL;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+    h2:
+      console:
+        enabled: true
+        path: /h2-console
   # jpa
   jpa:
     properties:
@@ -15,7 +19,7 @@ spring:
         show_sql: true # sql show
         format_sql: true # pretty show
     hibernate:
-      ddl-auto: none # db init (create, create-drop, update, validate, none)
+      ddl-auto: create # db init (create, create-drop, update, validate, none)
   web:
     resources:
       add-mappings: false
