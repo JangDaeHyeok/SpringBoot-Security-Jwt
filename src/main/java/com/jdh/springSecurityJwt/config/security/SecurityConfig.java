@@ -43,9 +43,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain config(HttpSecurity http, HandlerMappingIntrospector introspector) throws Exception {
-        MvcRequestMatcher.Builder mvc = new MvcRequestMatcher.Builder(introspector);
-
+    public SecurityFilterChain config(HttpSecurity http, MvcRequestMatcher.Builder mvc) throws Exception {
         // white list (Spring Security 체크 제외 목록)
         MvcRequestMatcher[] permitAllWhiteList = {
                 mvc.pattern("/login"),
